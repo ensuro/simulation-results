@@ -1,0 +1,121 @@
+{
+ "date": "2023-03-23",
+ "name": "Parachute preliminary simulation",
+ "configs": {
+  "generator": {
+   "generate_new": false,
+   "n_scenarios": 100,
+   "n_policies_per_time_window": 10,
+   "n_time_window": 5,
+   "len_time_window": 365,
+   "read_data": false,
+   "outfilename_prefix": null
+  },
+  "simulator": {
+   "n_simulations": 3,
+   "simulations_folder": "/stress-test-data/one_step/0.8/",
+   "len_simulations": 300,
+   "timestep_length": 1,
+   "poolname": null,
+   "risk_modules": {
+    "0": {
+     "premium_payout_perc": 1,
+     "loss_probability": 0.1,
+     "from_blockchain": null,
+     "coll_ratio": 0.75,
+     "jr_coll_ratio": 0.25,
+     "sr_roc": "0.05",
+     "jr_roc": "0.1",
+     "ensuro_pp_fee": 0.05,
+     "moc": 1.05,
+     "internal_loan_interest_rate": 0.0,
+     "senior_etk": null,
+     "junior_etk": null
+    }
+   },
+   "LPs": {
+    "1": {
+     "initial_balance": 1000000,
+     "checksize": 10000,
+     "target_ur": 0.9,
+     "target_capital": {
+      "eToken Senior": 50000,
+      "RM-0 Junior eToken": 16500
+     },
+     "investing_strategy": "c"
+    }
+   },
+   "YAML_SETUP": {
+    "module": "ensuro.prototype",
+    "currency": {
+     "name": "USD",
+     "symbol": "$",
+     "initial_supply": 1.12e-07,
+     "initial_balances": [
+      {
+       "user": "LP1",
+       "amount": 10000000000
+      },
+      {
+       "user": "CUST1",
+       "amount": 1000000000
+      }
+     ]
+    },
+    "etokens": [
+     {
+      "name": "eUSD1WEEK",
+      "expiration_period": 604800
+     },
+     {
+      "name": "eUSD1MONTH",
+      "expiration_period": 2592000
+     },
+     {
+      "name": "eUSD1YEAR",
+      "expiration_period": 31536000
+     }
+    ]
+   },
+   "premiums_accounts_to_rm": [
+    "RM-0 Junior eToken"
+   ]
+  },
+  "monitor": {
+   "etokens_to_monitor": [
+    "eToken Senior",
+    "RM-0 Junior eToken"
+   ],
+   "metrics_to_monitor": {
+    "pool": [],
+    "premiums_accounts": [
+     "active_pure_premiums",
+     "pure_premiums",
+     "won_pure_premiums",
+     "surplus",
+     "borrowed_active_pp"
+    ],
+    "etokens": [
+     "total_supply",
+     "funds_available",
+     "scr",
+     "scr_interest_rate",
+     "utilization_rate",
+     "token_interest_rate",
+     "funds_available_to_lock",
+     "total_withdrawable",
+     "loans",
+     "apr"
+    ],
+    "manual": [
+     "losses",
+     "pure_premiums",
+     "payouts"
+    ],
+    "LPs": true,
+    "n_policies": true
+   }
+  }
+ },
+ "results_file": "results/results_2023-03-23_stresstest-0.8.json"
+}
