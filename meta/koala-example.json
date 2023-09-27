@@ -1,0 +1,121 @@
+{
+ "date": "2023-07-20",
+ "name": "Koala example",
+ "configs": {
+  "generator": {
+   "generate_new": false,
+   "n_scenarios": 100,
+   "n_policies_per_time_window": 10,
+   "n_time_window": 5,
+   "len_time_window": 365,
+   "read_data": false,
+   "outfilename_prefix": null
+  },
+  "simulator": {
+   "n_simulations": 100,
+   "simulations_folder": "/data/sim_2023-07-18/",
+   "len_simulations": 19,
+   "timestep_length": 1,
+   "poolname": null,
+   "YAML_SETUP": {
+    "module": "ensuro.prototype",
+    "currency": {
+     "name": "USD",
+     "symbol": "$",
+     "initial_supply": 0.000112,
+     "initial_balances": [
+      {
+       "user": "CUST1",
+       "amount": 1000000000
+      },
+      {
+       "user": "LP1",
+       "amount": 10000000000
+      }
+     ]
+    }
+   },
+   "risk_modules": {
+    "0": {
+     "loss_probability": 0.1208,
+     "from_blockchain": null,
+     "coll_ratio": 0.3,
+     "jr_coll_ratio": 0.15,
+     "sr_roc": "0.05",
+     "jr_roc": "0.1",
+     "ensuro_pp_fee": 0.05,
+     "moc": 1.15,
+     "internal_loan_interest_rate": "0.0",
+     "senior_etk": null,
+     "junior_etk": null
+    },
+    "1": {
+     "loss_probability": 0.1103,
+     "from_blockchain": null,
+     "coll_ratio": 0.3,
+     "jr_coll_ratio": 0.15,
+     "sr_roc": "0.05",
+     "jr_roc": "0.1",
+     "ensuro_pp_fee": 0.05,
+     "moc": 1.15,
+     "internal_loan_interest_rate": "0.0",
+     "senior_etk": null,
+     "junior_etk": null
+    }
+   },
+   "LPs": {
+    "1": {
+     "initial_balance": 1000000000000000013287555072,
+     "checksize": 10000000,
+     "target_ur": 0.9,
+     "target_capital": {
+      "eToken Senior": 5000000,
+      "RM-0 Junior eToken": 1500000,
+      "RM-1 Junior eToken": 1500000
+     },
+     "investing_strategy": "c"
+    }
+   },
+   "premiums_accounts_to_rm": [
+    "RM-0 Junior eToken",
+    "RM-1 Junior eToken"
+   ]
+  },
+  "monitor": {
+   "etokens_to_monitor": [
+    "eToken Senior",
+    "RM-0 Junior eToken",
+    "RM-1 Junior eToken"
+   ],
+   "metrics_to_monitor": {
+    "premiums_accounts": [
+     "active_pure_premiums",
+     "pure_premiums",
+     "won_pure_premiums",
+     "surplus",
+     "borrowed_active_pp"
+    ],
+    "etokens": [
+     "total_supply",
+     "funds_available",
+     "scr",
+     "scr_interest_rate",
+     "utilization_rate",
+     "token_interest_rate",
+     "funds_available_to_lock",
+     "total_withdrawable",
+     "loans"
+    ],
+    "manual": [
+     "losses",
+     "pure_premiums",
+     "payouts"
+    ],
+    "pool": [],
+    "LPs": true,
+    "n_policies": true
+   }
+  }
+ },
+ "results_file": "results/koala-example.json"
+}

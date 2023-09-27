@@ -1,0 +1,1 @@
+This simulation is intended to be a showcase for a basic Ensuro product. We simulated a series of independent policies, each triggered with a 10% probability.
